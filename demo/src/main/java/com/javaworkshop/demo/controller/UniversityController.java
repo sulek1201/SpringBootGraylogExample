@@ -4,6 +4,7 @@ import com.javaworkshop.demo.dtos.ResponseDto;
 import com.javaworkshop.demo.service.UniversityService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,13 +19,8 @@ public class UniversityController {
     }
 
     @GetMapping("getUniversityList/{countryName}")
-    ResponseEntity<List<ResponseDto>> getUniversityList(String countryName){
-        return (ResponseEntity<List<ResponseDto>>) universityService.getUniversityList(countryName);
+    List<ResponseDto> getUniversityList(@PathVariable String countryName){
+        return  universityService.getUniversityList(countryName);
     }
-    @RequestMapping("/hello")
-    String getHello(){
-        return "hello";
-    }
-
 
 }
